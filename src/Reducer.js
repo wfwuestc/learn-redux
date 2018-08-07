@@ -4,7 +4,8 @@ export default (state, action) => {
 
     switch (action.type) {
         case ActionTypes.ADD:
-            let list = state.list;
+            let state1 = {...state};
+            let list = state1.list;
             list.push({
                 status: 0,
                 content: action.content
