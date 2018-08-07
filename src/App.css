@@ -1,0 +1,33 @@
+#root {
+  text-align: center;
+}
+
+#test {
+  display: block;
+  width: 300px;
+  height: 40px;
+  margin: 30px auto;
+  font-size: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.item-wrap {
+  width: 100%;
+  margin-top: 30px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.item-wrap p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.red {
+  color: #ff6775;
+}
+
+.blue {
+  color: #8592ff;
+}
