@@ -1,23 +1,26 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import store from './Store.js';
 import * as Actions from './Actions.js';
 import TodoItem from './components/TodoItem'
+import PropTypes from 'prop-types';
+
 
 const log = console.log.bind(console);
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props, context) {
+        super(props, context);
         this.addItem = this.addItem.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.getOwnState = this.getOwnState.bind(this);
+        this.changeState = this.changeState.bind(this);
 
         this.state = this.getOwnState()
     }
 
     getOwnState() {
         return {
-            lists: store.getState().list
+            lists: this.context.store.getState().list
         }
     }
 
@@ -28,17 +31,17 @@ class App extends Component {
     addItem(e) {
         if (e.keyCode === 13) {
             let val = e.target.value;
-            store.dispatch(Actions.add(val))
+            this.context.store.dispatch(Actions.add(val))
         }
     }
 
     changeState(e) {
         let id = e.target.dataset.id;
-        store.dispatch(Actions.toggle(id))
+        this.context.store.dispatch(Actions.toggle(id))
     }
 
     componentDidMount() {
-        store.subscribe(this.onChange);
+        this.context.store.subscribe(this.onChange);
     }
 
     render() {
@@ -55,6 +58,10 @@ class App extends Component {
                 </div>]
         );
     }
+}
+
+App.contextTypes = {
+    store: PropTypes.object
 }
 
 export default App;
