@@ -3,6 +3,8 @@ import './App.css';
 import * as Actions from './Actions.js';
 import TodoItem from './components/TodoItem'
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 
 const log = console.log.bind(console);
@@ -11,45 +13,32 @@ class App extends Component {
     constructor(props, context) {
         super(props, context);
         this.addItem = this.addItem.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.getOwnState = this.getOwnState.bind(this);
         this.changeState = this.changeState.bind(this);
-
-        this.state = this.getOwnState()
-    }
-
-    getOwnState() {
-        return {
-            lists: this.context.store.getState().list
-        }
-    }
-
-    onChange() {
-        this.setState(this.getOwnState());
     }
 
     addItem(e) {
+        const {actions} = this.props
         if (e.keyCode === 13) {
             let val = e.target.value;
-            this.context.store.dispatch(Actions.add(val))
+            actions.add(val)
         }
     }
 
     changeState(e) {
-        let id = e.target.dataset.id;
-        this.context.store.dispatch(Actions.toggle(id))
+        const {actions} = this.props
+        const id = e.target.dataset.id;
+        actions.toggle(id)
     }
 
     componentDidMount() {
-        this.context.store.subscribe(this.onChange);
     }
 
     render() {
-        let {lists} = this.state;
+        const {list} = this.props;
         return ([<input key={1} type="text" id="test" onKeyUp={this.addItem}/>,
                 <div key={2} className="item-wrap">
                     {
-                        lists.map((el, i) => {
+                        list.map((el, i) => {
                             return (
                                 <TodoItem key={i} el={el} change={this.changeState}/>
                             )
@@ -60,8 +49,17 @@ class App extends Component {
     }
 }
 
-App.contextTypes = {
-    store: PropTypes.object
+App.propTypes = {
+    list: PropTypes.object
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    list: state.list
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(Actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
