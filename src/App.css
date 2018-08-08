@@ -1,5 +1,10 @@
 #root {
   text-align: center;
+  width:600px;
+  height: 900px;
+  margin: 0 auto;
+  background: aliceblue;
+  padding-top: 30px;
 }
 
 #test {
