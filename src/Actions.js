@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes.js';
-
 export const add = (val) => {
     return {
         type: ActionTypes.ADD,
@@ -7,9 +6,9 @@ export const add = (val) => {
     };
 }
 
-export const change = (index) => {
+export const toggle = (index) => {
     return {
-        type: ActionTypes.CHANGE,
+        type: ActionTypes.TOGGLE,
         index: index
     };
 }

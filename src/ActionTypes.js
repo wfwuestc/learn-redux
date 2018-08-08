@@ -1,3 +1,3 @@
 export const ADD = 'add';
 
-export const CHANGE = 'change';
+export const TOGGLE = 'toggle';

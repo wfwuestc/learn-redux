@@ -3,8 +3,9 @@ import reducer from './Reducer.js';
 
 const initValues = {
     list: [{
+        id:0,
         status: 0,
-        content: '添加你想做的事'
+        content: '添加你想做的事',
     }]
 };
 

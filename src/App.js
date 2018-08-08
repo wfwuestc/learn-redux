@@ -33,7 +33,7 @@ class App extends Component {
 
     changeState(e) {
         let index = e.target.dataset.index;
-        store.dispatch(Actions.change(index))
+        store.dispatch(Actions.toggle(index))
     }
 
     componentDidMount() {
