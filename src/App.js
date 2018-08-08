@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import store from './Store.js';
 import * as Actions from './Actions.js';
+import TodoItem from './components/TodoItem'
 
 const log = console.log.bind(console);
 
@@ -47,12 +48,7 @@ class App extends Component {
                     {
                         lists.map((el, i) => {
                             return (
-                                <p key={i}>
-                                    <input type="checkbox" data-id={el.id} defaultChecked={el.status === 1}
-                                           onChange={this.changeState}/>
-                                    <span className="todo-content">{el.content}</span>
-                                    <span className={el.status === 0?"red":"blue"}>{el.status === 0 ? '未完成' : '已完成'}</span>
-                                </p>
+                                <TodoItem key={i} el={el} change={this.changeState}/>
                             )
                         })
                     }
