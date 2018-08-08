@@ -1,6 +1,14 @@
 import * as ActionTypes from './ActionTypes.js';
 
-export default (state, action) => {
+const initValues = {
+  list: [{
+    id:0,
+    status: 0,
+    content: '添加你想做的事',
+  }]
+};
+
+export default (state = initValues, action) => {
     let nextId = 1;
     switch (action.type) {
         case ActionTypes.ADD:

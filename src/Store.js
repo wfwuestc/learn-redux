@@ -1,14 +1,11 @@
-import {createStore} from 'redux';
+import {createStore, compose} from 'redux';
 import reducer from './Reducer.js';
 
-const initValues = {
-    list: [{
-        id:0,
-        status: 0,
-        content: '添加你想做的事',
-    }]
-};
-
-const store = createStore(reducer, initValues);
+const store = createStore(
+    reducer,
+    compose(
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
+);
 
 export default store;
