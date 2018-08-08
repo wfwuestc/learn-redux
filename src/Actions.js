@@ -6,9 +6,9 @@ export const add = (val) => {
     };
 }
 
-export const toggle = (index) => {
+export const toggle = (id) => {
     return {
         type: ActionTypes.TOGGLE,
-        index: index
+        id: id
     };
 }

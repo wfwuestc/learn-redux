@@ -7,8 +7,8 @@ const log = console.log.bind(console);
 
 class App extends Component {
     constructor() {
-        super()
-        this.addItem = this.addItem.bind(this)
+        super();
+        this.addItem = this.addItem.bind(this);
         this.onChange = this.onChange.bind(this);
 
         this.state = this.getOwnState()
@@ -32,8 +32,8 @@ class App extends Component {
     }
 
     changeState(e) {
-        let index = e.target.dataset.index;
-        store.dispatch(Actions.toggle(index))
+        let id = e.target.dataset.id;
+        store.dispatch(Actions.toggle(id))
     }
 
     componentDidMount() {
@@ -48,7 +48,7 @@ class App extends Component {
                         lists.map((el, i) => {
                             return (
                                 <p key={i}>
-                                    <input type="checkbox" data-index={i} defaultChecked={el.status === 1}
+                                    <input type="checkbox" data-id={el.id} defaultChecked={el.status === 1}
                                            onChange={this.changeState}/>
                                     <span className="todo-content">{el.content}</span>
                                     <span className={el.status === 0?"red":"blue"}>{el.status === 0 ? '未完成' : '已完成'}</span>
