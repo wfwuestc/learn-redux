@@ -10,7 +10,7 @@ class TodoList extends Component {
     constructor(props) {
         super(props)
         this.changeState = this.changeState.bind(this)
-        this.deleteItem = this.changeState.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
     changeState(e) {
