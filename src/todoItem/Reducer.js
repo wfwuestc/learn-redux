@@ -9,12 +9,12 @@ const initValues = {
 };
 
 export default (state = initValues, action) => {
-    let nextId = 1;
+
     switch (action.type) {
         case ActionTypes.ADD:
             return {
                 list: [...state.list, {
-                    id: nextId++,
+                    id: action.id,
                     status: 0,
                     content: action.content
                 }]
@@ -27,6 +27,12 @@ export default (state = initValues, action) => {
                     } else {
                         return el
                     }
+                })
+            };
+        case ActionTypes.DEL:
+            return {
+                list: state.list.filter((el) => {
+                    return el.id !== Number(action.id)
                 })
             };
         default:

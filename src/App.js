@@ -6,14 +6,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-
-const log = console.log.bind(console);
-
 class App extends Component {
     constructor(props, context) {
         super(props, context);
         this.addItem = this.addItem.bind(this);
         this.changeState = this.changeState.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     addItem(e) {
@@ -26,11 +24,14 @@ class App extends Component {
 
     changeState(e) {
         const {actions} = this.props
-        const id = e.target.dataset.id;
+        let id = e.target.dataset.id;
         actions.toggle(id)
     }
 
-    componentDidMount() {
+    deleteItem(e) {
+        const {actions} = this.props
+        let id = e.target.dataset.id;
+        actions.del(id)
     }
 
     render() {
@@ -40,7 +41,7 @@ class App extends Component {
                     {
                         list.map((el, i) => {
                             return (
-                                <TodoItem key={i} el={el} change={this.changeState}/>
+                                <TodoItem key={i} el={el} change={this.changeState} del={this.deleteItem}/>
                             )
                         })
                     }
@@ -50,7 +51,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    list: PropTypes.object
+    list: PropTypes.array
 }
 
 const mapStateToProps = state => {

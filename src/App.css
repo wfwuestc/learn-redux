@@ -29,10 +29,16 @@
   justify-content: space-between;
 }
 
+.todo-content {
+  flex:2
+}
+
 .red {
   color: #ff6775;
+  flex: 1;
 }
 
 .blue {
   color: #8592ff;
+  flex: 1;
 }
