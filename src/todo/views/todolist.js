@@ -25,8 +25,6 @@ class TodoList extends Component {
         actions.del(id)
     }
 
-
-
     render() {
         const {list} = this.props;
         return (
@@ -47,9 +45,7 @@ TodoList.propTypes = {
     list: PropTypes.array.isRequired
 };
 
-
 const selectVisibleTodos = (todos, filter) => {
-    console.log(filter)
     switch (filter) {
         case FilterTypes.ALL:
             return todos;
