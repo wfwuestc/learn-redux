@@ -1,5 +1,5 @@
 import {createStore, compose} from 'redux';
-import reducer from './Reducer.js';
+import reducer from './todoItem/Reducer.js';
 
 const store = createStore(
     reducer,

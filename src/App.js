@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import * as Actions from './Actions.js';
-import TodoItem from './components/TodoItem'
+import * as Actions from './todoItem/Actions.js';
+import TodoItem from './todoItem/TodoItem'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
