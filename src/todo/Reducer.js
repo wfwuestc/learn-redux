@@ -8,8 +8,7 @@ const initValues = {
   }]
 };
 
-export default (state = initValues, action) => {
-
+const todoReducer = (state = initValues, action) => {
     switch (action.type) {
         case ActionTypes.ADD:
             return {
@@ -39,3 +38,5 @@ export default (state = initValues, action) => {
             return state
     }
 }
+
+export default todoReducer
