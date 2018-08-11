@@ -1,7 +1,6 @@
 import * as ActionTypes from './ActionTypes.js';
 
 const weatherReducer =  (state = {status: ActionTypes.REQUEST}, action) => {
-    console.log(action)
     switch (action.type) {
         case ActionTypes.REQUEST: {
             return {status: ActionTypes.REQUEST}

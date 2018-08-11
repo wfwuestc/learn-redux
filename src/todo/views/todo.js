@@ -1,6 +1,6 @@
 import React from 'react'
-import TodoList from './todolist'
-import AddTodo from './addtodo'
+import TodoList from './todoList'
+import AddTodo from './addTodo'
 
 const Todo = () => {
     return ([

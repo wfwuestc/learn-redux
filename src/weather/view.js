@@ -1,7 +1,9 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import * as ActionTypes from './ActionTypes'
-import {fetchWeather} from "./Actions";
+import {bindActionCreators} from "redux";
+import * as Actions from './Actions'
+
 
 class Weather extends Component{
     constructor(props) {
@@ -9,38 +11,38 @@ class Weather extends Component{
     }
 
     componentWillMount(){
-        this.props.getWeather()
+        this.props.actions.fetchWeather()
     }
 
     render () {
         let {status, city, weather, temperature} = this.props
         return (
             status === ActionTypes.REQUEST ? <div>天气数据请求中...</div>
-                : status === 'ok' ? <div>{city} {weather} 温度{temperature} </div>
+                : status === 'ok' ? <div>{city} {weather} 温度{temperature}℃ </div>
                 : <div>天气请求失败</div>
         )
     }
 }
 
-
 const mapStateToProps = (state) => {
     const data = state.weather;
     if(data.status === 'ok') {
-        console.log(data)
         return {
             status: data.status,
             city: data.basic.location,
-            temperature: data.now.tmp
+            weather: data.now.cond_txt,
+            temperature: data.now.tmp,
+        }
+    }else {
+        return {
+            status: data.status
         }
     }
-
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getWeather: () => {
-            dispatch(fetchWeather());
-        }
+        actions: bindActionCreators(Actions, dispatch),
     }
 };
 

@@ -7,9 +7,9 @@ import Weather from './weather/view'
 const App = () => {
     return (
         [
-            <Todo key={1}/>,
-            <Filters key={2}/>,
-            <Weather key={3}/>
+            <Weather key={1}/>,
+            <Todo key={2}/>,
+            <Filters key={3}/>,
         ]
     )
 }
