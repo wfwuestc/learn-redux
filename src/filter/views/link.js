@@ -6,15 +6,15 @@ import {connect} from 'react-redux';
 
 const Link =({active, onClick, children}) => {
     if (active) {
-        return <a className="filter selected">{children}</a>;
+        return <button className="filter selected">{children}</button>;
     } else {
         return (
-            <a href="#" className="filter not-selected" onClick={(e) => {
+            <button className="filter not-selected" onClick={(e) => {
                 e.preventDefault();
                 onClick();
             }}>
                 {children}
-            </a>
+            </button>
         );
     }
 }

@@ -6,10 +6,6 @@ import * as Actions from './Actions'
 
 
 class Weather extends Component{
-    constructor(props) {
-        super(props)
-    }
-
     componentWillMount(){
         this.props.actions.fetchWeather()
     }

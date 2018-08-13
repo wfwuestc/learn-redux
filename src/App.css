@@ -42,3 +42,14 @@
   color: #8592ff;
   flex: 1;
 }
+
+.filter {
+  border: 0;
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
+.selected {
+  background: #c8d8fa;
+  color: white;
+}
