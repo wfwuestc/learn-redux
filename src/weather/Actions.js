@@ -15,6 +15,8 @@ export const fetchFailure = (error) => ({
 })
 
 export const fetchWeather = () => {
+
+    // dispatch 谁传进来
     return (dispatch) => {
         const apiUrl = `https://free-api.heweather.com/s6/weather/now?location=auto_ip&key=92b92682429c4c0385ab6a402bcb4e89`;
 
